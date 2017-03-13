@@ -1,0 +1,23 @@
+DirectoryIndex index.html index.wsgi
+AddHandler wsgi-script .wsgi
+
+<VirtualHost *:80>
+	ServerName www.example.com
+	ServerAdmin doe@example.com
+
+	AllowEncodedSlashes NoDecode
+
+	DocumentRoot /app/www-data
+	<Directory /app/www-data>
+		Require all granted
+		AllowOverride None
+		Options MultiViews ExecCGI
+		MultiviewsMatch Handlers
+	</Directory>
+
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+	WSGIDaemonProcess www.example.com python-home=/app/virtualenv python-path=/app/pylibs
+	WSGIProcessGroup www.example.com
+</VirtualHost>
