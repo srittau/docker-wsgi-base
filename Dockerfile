@@ -22,7 +22,6 @@ RUN mkdir /app
 WORKDIR /app
 RUN python3.4 -m venv ./virtualenv
 RUN ./virtualenv/bin/pip install --upgrade pip setuptools
-ONBUILD ADD requirements.txt /app
 
 # Install app
 RUN mkdir ./pylibs
