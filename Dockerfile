@@ -9,9 +9,6 @@ RUN apt-get -yqq update && \
 COPY ./locale.gen /etc/locale.gen
 RUN locale-gen
 
-# Copy startup script
-COPY ./start-apache.sh /root/
-
 # Prepare virtualenv
 RUN mkdir /app
 WORKDIR /app
@@ -33,5 +30,4 @@ ONBUILD COPY apache.conf /etc/apache2/sites-available/000-default.conf
 
 # Start Apache
 EXPOSE 80
-ENTRYPOINT ["/bin/sh", "-c"]
-CMD ["/root/start-apache.sh"]
+CMD ["/usr/sbin/apache2ctl", "-DFOREGROUND"]
