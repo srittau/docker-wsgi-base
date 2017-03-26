@@ -20,6 +20,7 @@ RUN ./virtualenv/bin/pip install mod_wsgi
 
 # Remove development packages
 RUN dpkg --purge apache2-dev
+RUN apt-get autoremove -y
 
 # Prepare app directory
 RUN mkdir ./pylibs
