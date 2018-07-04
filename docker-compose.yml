@@ -1,0 +1,8 @@
+version: '3'
+services:
+  py37:
+    image: srittau/wsgi-base:3.7
+    build: .
+  latest:
+    image: srittau/wsgi-base:latest
+    build: .
