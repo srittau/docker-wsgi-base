@@ -1,4 +1,4 @@
-FROM python:3.6-stretch
+FROM python:3.7-stretch
 
 # Install packages
 RUN apt-get -yqq update && \
@@ -12,7 +12,7 @@ RUN locale-gen
 # Prepare virtualenv
 RUN mkdir /app
 WORKDIR /app
-RUN python3.6 -m venv ./virtualenv
+RUN python3.7 -m venv ./virtualenv
 RUN ./virtualenv/bin/pip install --upgrade pip setuptools
 
 # Install mod_wsgi
