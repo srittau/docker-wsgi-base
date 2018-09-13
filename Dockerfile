@@ -1,5 +1,7 @@
 ARG pyversion=3.7
 FROM python:${pyversion}-stretch
+ARG pyversion=3.7
+ENV PYVERSION ${pyversion:-3.7}
 
 # Install packages
 RUN apt-get -yqq update && \
@@ -24,7 +26,8 @@ RUN mkdir ./pylibs
 
 # Configure Apache
 COPY ./start-apache.sh /
-COPY ./wsgi.conf /etc/apache2/mods-enabled/wsgi.conf
+COPY ./wsgi.conf.tmpl /tmp/wsgi.conf.tmpl
+RUN sed -e s/\$PYVERSION/$PYVERSION/g /tmp/wsgi.conf.tmpl | sed -e s/\$PYV/`echo $PYVERSION | sed -e "s/\\.//"`/g >/etc/apache2/mods-enabled/wsgi.conf
 ONBUILD COPY apache.conf /etc/apache2/sites-available/000-default.conf
 
 # Start Apache
