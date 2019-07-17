@@ -1,5 +1,5 @@
 ARG pyversion=3.7
-FROM python:${pyversion}-stretch
+FROM python:${pyversion}-buster
 ARG pyversion=3.7
 ENV PYVERSION ${pyversion:-3.7}
 
