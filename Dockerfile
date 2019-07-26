@@ -27,6 +27,7 @@ RUN mkdir ./pylibs
 # Configure Apache
 COPY ./start-apache.sh /
 COPY ./wsgi.conf.tmpl /tmp/wsgi.conf.tmpl
+RUN a2dismod mpm_event && a2enmod mpm_prefork
 RUN sed -e s/\$PYVERSION/$PYVERSION/g /tmp/wsgi.conf.tmpl | sed -e s/\$PYV/`echo $PYVERSION | sed -e "s/\\.//"`/g >/etc/apache2/mods-enabled/wsgi.conf
 ONBUILD COPY apache.conf /etc/apache2/sites-available/000-default.conf
 
