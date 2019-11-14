@@ -20,6 +20,7 @@ RUN ./virtualenv/bin/pip install --upgrade pip setuptools
 
 # Install mod_wsgi
 RUN ./virtualenv/bin/pip install mod_wsgi
+RUN ln -s /app/virtualenv/lib/python$PYVERSION/site-packages/mod_wsgi/server/mod_wsgi-*.so /app/virtualenv/lib/python$PYVERSION/site-packages/mod_wsgi/server/mod_wsgi.so
 
 # Prepare app directory
 RUN mkdir ./pylibs
