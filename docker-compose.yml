@@ -1,5 +1,11 @@
 version: '3'
 services:
+  py38:
+    image: srittau/wsgi-base:3.8
+    build:
+      context: .
+      args:
+        - pyversion=3.8
   py37:
     image: srittau/wsgi-base:3.7
     build:
