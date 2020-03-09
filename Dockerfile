@@ -1,7 +1,7 @@
-ARG pyversion=3.7
+ARG pyversion=3.8
 FROM python:${pyversion}-buster
-ARG pyversion=3.7
-ENV PYVERSION ${pyversion:-3.7}
+ARG pyversion=3.8
+ENV PYVERSION ${pyversion:-3.8}
 
 # Install packages
 RUN apt-get -yqq update && \

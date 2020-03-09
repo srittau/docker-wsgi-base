@@ -6,12 +6,6 @@ services:
       context: .
       args:
         - pyversion=3.8
-  py37:
-    image: srittau/wsgi-base:3.7
-    build:
-      context: .
-      args:
-        - pyversion=3.7
   latest:
     image: srittau/wsgi-base:latest
     build: .
