@@ -1,5 +1,5 @@
 ARG pyversion=3.9
-FROM python:${pyversion}-buster
+FROM python:${pyversion}-bullseye
 ARG pyversion=3.9
 ENV PYVERSION ${pyversion:-3.9}
 
