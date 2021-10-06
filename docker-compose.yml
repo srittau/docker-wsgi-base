@@ -1,5 +1,11 @@
 version: '3'
 services:
+  py310:
+    image: srittau/wsgi-base:3.10
+    build:
+      context: .
+      args:
+        - pyversion=3.10
   py39:
     image: srittau/wsgi-base:3.9
     build:
